@@ -1,0 +1,212 @@
+{
+  "nodes": [
+    { 
+      "id": 1,
+      "ano": 1934,
+      "label": "Popper\n(1902-1994)",
+      "group": "filosofo", 
+      "title": "<b>Definição de Ciência:</b><br>Ciência é o que pode ser testado e potencialmente falsificado. Uma teoria é científica porque faz previsões claras que podem ser checadas.",
+      "image": "images/popper.jpg",
+      "shape": "circularImage"
+    },
+    { 
+      "id": 2,
+      "ano": 1968,
+      "label": "Lakatos\n(1922-1974)", 
+      "group": "filosofo", 
+      "title": "<b>Definição de Ciência:</b><br>Programas de investigação científica que progridem ou degeneram ao longo do tempo.",
+      "image": "images/lakatos.jpg", 
+      "shape": "circularImage"
+    },
+    { 
+      "id": 3, 
+      "ano": 0,
+      "label": "Astrologia", 
+      "group": "campo", 
+      "shape": "circularImage",
+      "image": "images/astrologia.jpg",
+      "title": "Sistema de crenças que afirma que a posição dos astros influencia a personalidade e o futuro." 
+    },
+    { 
+      "id": 4, 
+      "ano": 0,
+      "label": "Física Quântica", 
+      "shape": "circularImage",
+      "image": "images/fisica_quantica.jpg",
+      "group": "campo",
+      "title": "Área da ciência que estuda o comportamento da matéria e da energia em escalas extremamente pequenas." 
+    },
+    { 
+      "id": 5, 
+      "label": "Psicanálise",
+      "ano": 0,
+      "shape": "circularImage",
+      "image": "images/psicanalise.jpg",
+      "group": "campo",
+      "title": "Método de investigação da mente e abordagem terapêutica criada pelo médico Sigmund Freud."
+    },
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    { 
+      "id": 6,
+      "ano": 1962,
+      "label": "Kuhn\n(1922-1996)", 
+      "group": "filosofo", 
+      "title": "<b>Definição de Ciência:</b><br>A ciência desenvolve-se através de períodos de 'ciência normal' regidos por um paradigma, interrompidos por revoluções científicas.",
+      "image": "images/kuhn.jpg", 
+      "shape": "circularImage"
+    },
+    { 
+      "id": 7, 
+      "ano": 1975,
+      "label": "Feyerabend\n(1924-1994)", 
+      "group": "filosofo", 
+      "title": "<b>Definição de Ciência:</b><br>Anarquismo Epistemológico. 'Tudo vale' (Anything goes). Não existe um método científico universal ou regras fixas que governem o progresso.",
+      "image": "images/feyerabend.jpg", 
+      "shape": "circularImage"
+    },
+    { 
+      "id": 8, 
+      "ano": 1948,
+      "label": "Hempel\n(1905-1997)", 
+      "group": "filosofo", 
+      "title": "<b>Definição de Ciência:</b><br>Empirismo Lógico. A ciência explica fenómenos deduzindo-os a partir de leis gerais universais (Modelo Dedutivo-Nomológico).",
+      "image": "images/hempel.jpg", 
+      "shape": "circularImage"
+    },
+    { 
+      "id": 9,
+      "ano": 0, 
+      "label": "Homeopatia",
+      "shape": "circularImage",
+      "image": "images/homeopatia.jpg",
+      "group": "campo",
+      "title": "Sistema de medicina alternativa baseado no princípio de que 'semelhante cura semelhante' através de diluições extremas."
+    },
+    { 
+      "id": 10,
+      "ano": 0, 
+      "label": "Biologia Evolutiva",
+      "shape": "circularImage",
+      "image": "images/biologia.jpg",
+      "group": "campo",
+      "title": "Ramo da biologia que estuda a origem, a descendência e as mudanças das espécies ao longo do tempo (Teoria da Evolução)."
+    },
+    { 
+      "id": 11, 
+      "ano": 0,
+      "label": "Economia",
+      "shape": "circularImage",
+      "image": "images/economia.jpg",
+      "group": "campo",
+      "title": "Ciência social que estuda a produção, distribuição e consumo de bens e serviços."
+    }
+  ],
+
+  "edges": [
+    { "from": 1, "to": 3,
+        "color": { "color": "#ff4d4d", "hover": "#cc0000" }, 
+        "title": "<b>Justificativa de Popper:</b><br>É pseudociência porque geralmente não é falsificável. Faz previsões muito vagas.", 
+        "width": 3 },
+    { "from": 1, "to": 2,
+        "color": { "color": "#888888" }, 
+        "smooth": { "type": "curvedCW", "roundness": 0.2 }, 
+        "title": "Ambos definem ciência principalmente tentando separar ciência de pseudociência.", 
+        "dashes": true, 
+        "width": 2 },
+    { "from": 1, "to": 4,
+        "color": { "color": "#00cc66", "hover": "#00994d" }, 
+        "title": "<b>Justificativa de Popper:</b><br>A física faz previsões altamente arriscadas e testáveis.", 
+        "width": 3 },
+    { "from": 1, "to": 5,
+        "color": { "color": "#ff4d4d", "hover": "#cc0000" }, 
+        "title": "<b>Justificativa de Popper:</b><br>Teorias irrefutáveis que se adaptam a qualquer resultado e não podem ser testadas.", 
+        "width": 3 },
+    
+    { "from": 2, "to": 3,   
+        "color": { "color": "#ff4d4d", "hover": "#cc0000" }, 
+        "title": "<b>Justificativa de Lakatos:</b><br>Em vez de descobrir novos factos, a astrologia apenas manipula as suas teorias para se adaptar a eventos que já aconteceram.", 
+        "width": 3 },
+    { "from": 2, "to": 4, 
+        "color": { "color": "#00cc66", "hover": "#00994d" }, 
+        "title": "<b>Justificativa de Lakatos:</b><br>A mecânica quântica é um programa de investigação estruturado com um núcleo duro irrefutável e uma heurística que se expande.", 
+        "width": 3 },
+    { "from": 2, "to": 5,
+        "color": { "color": "#ff4d4d", "hover": "#cc0000" }, 
+        "title": "<b>Justificativa de Lakatos:</b><br>A psicanálise freudiana estagnou, tornando-se num programa degenerativo e defensivo.", 
+        "width": 3 },
+    
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    { "from": 6, "to": 1, 
+        "color": { "color": "#888888" }, "smooth": { "type": "curvedCCW", "roundness": 0.2 }, 
+        "title": "<b>Diálogo:</b><br>Kuhn critica Popper, afirmando que os cientistas normais raramente tentam falsificar as suas próprias teorias; eles apenas tentam resolver 'puzzles' dentro do paradigma.", 
+        "dashes": true, 
+        "width": 2 },
+    { "from": 6, "to": 3, 
+        "color": { "color": "#ff4d4d", "hover": "#cc0000" }, 
+        "title": "<b>Justificativa de Kuhn:</b><br>A astrologia não é ciência porque, quando as previsões falham, os astrólogos não tentam rever o seu paradigma como fariam os cientistas, eles simplesmente arranjam desculpas.", 
+        "width": 3 },
+    { "from": 6, "to": 10, 
+        "color": { "color": "#00cc66", "hover": "#00994d" }, "title": "<b>Justificativa de Kuhn:</b><br>Opera sob o poderoso paradigma moderno do Neo-Darwinismo, resolvendo quebra-cabeças biológicos de forma consistente.", 
+        "width": 3 },
+    
+    { "from": 7, "to": 2, 
+        "color": { "color": "#888888" }, "smooth": { "type": "curvedCW", "roundness": 0.2 }, 
+        "title": "<b>Diálogo:</b><br>Feyerabend e Lakatos eram grandes amigos. Feyerabend argumentava contra os 'programas de investigação' de Lakatos, dizendo que tentar impor regras à ciência sufoca o progresso.", 
+        "dashes": true, 
+        "width": 2 },
+    { "from": 7, "to": 9, 
+        "color": { "color": "#00cc66", "hover": "#00994d" }, 
+        "title": "<b>Justificativa de Feyerabend:</b><br>'Tudo vale'. Ele defendia que o Estado não deveria impor apenas a medicina convencional e que práticas como a homeopatia deveriam ter espaço para competir e ser estudadas livremente.", 
+        "width": 3 },
+    
+    { "from": 8, "to": 1, 
+        "color": { "color": "#888888" }, "smooth": { "type": "curvedCW", "roundness": 0.15 },
+        "title": "<b>Diálogo:</b><br>Ambos procuravam uma demarcação clara da ciência, mas Hempel focava-se na confirmação de hipóteses através da observação, o que Popper rejeitava com o seu falsificacionismo.", 
+        "dashes": true, 
+        "width": 2 },
+    { "from": 8, "to": 4, 
+        "color": { "color": "#00cc66", "hover": "#00994d" }, 
+        "title": "<b>Justificativa de Hempel:</b><br>É ciência porque as suas formulações permitem deduzir logicamente os fenómenos observados a partir de leis fundamentais universais.", 
+        "width": 3 },
+    { "from": 1, "to": 10, 
+        "color": { "color": "#00cc66", "hover": "#00994d" }, 
+        "title": "<b>Evolução de Popper:</b><br>Inicialmente chamou-lhe um 'programa de investigação metafísico', mas mais tarde retratou-se, reconhecendo que a biologia evolutiva faz previsões genuinamente testáveis.", 
+        "width": 3 },
+    { "from": 2, "to": 11, 
+        "color": { "color": "#00cc66", "hover": "#00994d" }, 
+        "title": "<b>Justificativa de Lakatos:</b><br>Muitos epistemólogos utilizam as ideias de Lakatos para classificar a economia como um programa de investigação com um 'núcleo duro' de racionalidade.", 
+        "width": 3 },
+    { "from": 1, "to": 9, 
+        "color": { "color": "#ff4d4d", "hover": "#cc0000" }, 
+        "title": "<b>Justificativa de Popper:</b><br>As explicações homeopáticas para o fato de a água ter 'memória' utilizam frequentemente hipóteses ad hoc, escapando à falsificação rigorosa.", 
+        "width": 3 }
+  ]
+}
