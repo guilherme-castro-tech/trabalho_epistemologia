@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <title>Epistemologia - Impatech (Pré -Projeto)</title>
+    
+    <script type="text/javascript" src="https://unpkg.com/vis-network/standalone/umd/vis-network.min.js"></script>
+    
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600&display=swap" rel="stylesheet">
+    
+    <link rel="stylesheet" href="style.css">
+</head>
+
+
+<body>
+
+    <aside class="sidebar">
+        <h1>Epistemologia da Ciência</h1>
+        <p>Explore as definições de ciência propostas por filósofos e como eles a demarcam.</p>
+        
+        <div class="legend">
+            <h3>Arestas</h3>
+            <div class="legend-item">
+                <div class="color-box color-science"></div>
+                <span>Considerado Ciência por</span>
+            </div>
+            <div class="legend-item">
+                <div class="color-box color-pseudo"></div>
+                <span>Considerado Pseudociência por</span>
+            </div>
+            <div class="legend-item">
+                <div class="color-box color-dialogue" style="width: 20px;"></div>
+                <span>Diálogo entre Autores</span>
+            </div>
+        </div>
+    </aside>
+
+    <main class="graph-container">
+        <div id="mynetwork"></div>
+    </main>
+
+    <script type="text/javascript">
+        function htmlTitle(textoHTML) {
+            var container = document.createElement("div");
+            container.innerHTML = textoHTML;
+            return container;
+        }
+        
+        // Os dados dos vértices (nós)
+        var nodes = new vis.DataSet([
+            { id: 1,
+                label: 'Popper\n(1902-1994)',
+                group: 'filosofo', 
+                title: htmlTitle('<b>Definição de Ciência:</b>Ciência é o que pode ser testado e potencialmente falsificado. Uma teoria é científica porque faz previsões claras que podem ser checadas.'),
+                image: 'images/popper.jpg',
+                shape: 'circularImage'},
+            { id: 2, 
+                label: 'Lakatos\n(1922-1974)', 
+                group: 'filosofo', 
+                title: htmlTitle('<b>Definição de Ciência:</b>Programas de pesquisa científica que progridem ou degeneram ao longo do tempo.'),
+                shape: 'circularImage',
+                image:'images/lakkatos.jpg' },
+            { id: 3, 
+                label: 'Astrologia', 
+                group: 'campo', 
+                shape: 'circularImage',
+                image: 'images/astrologia.jpg',
+                title: htmlTitle('Sistema de crenças que afirma que a posição dos astros influencia a personalidade e o futuro.') },
+            { id: 4, 
+                label: 'Física Quântica', 
+                shape: 'circularImage',
+                image: 'images/fisica_quantica.jpg',
+                group: 'campo',
+                title: htmlTitle('Área da ciência que estuda o comportamento da matéria e da energia em escalas extremamente pequenas, como átomos e partículas subatômicas.') },
+            { id: 5, 
+                label: 'Psicanálise',
+                shape: 'circularImage',
+                image: 'images/psicanalise.jpg',
+                group: 'campo',
+                title: htmlTitle('Método de investigação da mente e uma abordagem terapêutica criada pelo médico Sigmund Freud.') }
+    
+        ]);
+
+        // Os dados das arestas (linhas)
+        var edges = new vis.DataSet([
+            { from: 1, to: 3, 
+                color: { color: '#ff4d4d', hover: '#cc0000' }, title: htmlTitle('<b>Justificativa de Popper:</b>É pseudociência porque geralmente não é falsificável. Faz previsões muito vagas.'), width: 3 },
+            { from: 1, to: 2, 
+                color: { color: '#888888' }, smooth: { type: 'curvedCW', roundness: 0.2 }, title: htmlTitle('Ambos definem ciência principalmente tentando separar ciência de pseudociência.'), dashes: true, width: 2 },
+            { from: 1, to: 4, 
+                color: { color: '#00cc66', hover: '#00994d' }, title: htmlTitle('<b>Justificativa de Popper:</b>A física faz previsões altamente arriscadas e testáveis.'), width: 3 },
+            { from: 1, to: 5, 
+                color: { color: '#ff4d4d', hover: '#cc0000' }, title: htmlTitle('<b>Justificativa de Popper:</b>Teorias irrefutáveis que se adaptam a qualquer resultado.'), width: 3 },
+            { from: 2, to: 3,
+                color: { color: '#ff4d4d', hover: '#cc0000' }, title: htmlTitle('<b>Justificativa de Lakkatos:</b>Em vez de descobrir novos fatos, a astrologia apenas manipula suas teorias para se adaptar a eventos que já aconteceram.'), width: 3 },
+            { from: 2, to: 4,
+                color: { color: '#00cc66', hover: '#00994d' }, title: htmlTitle('<b>Justificativa de Lakkatos:</b>Lakatos via a mecânica quântica como um programa de pesquisa estruturado em um núcleo irrefutável e uma heurística que se expande.'), width: 3 },
+            { from: 2, to: 5,
+                color: { color: '#ff4d4d', hover: '#cc0000' }, title: htmlTitle('<b>Justificativa de Lakkatos:</b>A psicanálise freudiana começou como um "programa de pesquisa" cientificamente progressivo, mas, com o tempo, estagnou e tornou-se defensivo.'), width: 3 }
+        ]);
+
+        var container = document.getElementById('mynetwork');
+        var data = { nodes: nodes, edges: edges };
+        var options = {
+            nodes: {
+                    shape: 'dot',
+                    size: 25, // Tamanho base para os nós normais
+                    font: { size: 16, face: 'Inter', color: '#333' },
+                    borderWidth: 2
+                },
+                groups: {
+                    filosofo: {
+
+                        size: 40,
+                        color: { 
+                            border: '#1a1a1a', // Cor da borda ao redor da foto
+                            background: '#ffffff'
+                        },
+                        font: { color: '#1a1a1a', face: 'Inter', size: 14, bold: true },
+                        borderWidth: 4, // Espessura da borda da foto
+                        shadow: { enabled: true, color: 'rgba(0,0,0,0.2)', size: 10, x: 2, y: 2 }
+                    },
+                    campo: {
+                        color: { background: '#f0f0f0', border: '#d3d3d3' },
+                        font: { color: '#333', face: 'Inter' },
+                        shadow: { enabled: true, color: 'rgba(0,0,0,0.1)', size: 5, x: 2, y: 2 }
+                    }
+                },
+            interaction: {
+                hover: true,
+                tooltipDelay: 50
+            },
+            physics: {
+                solver: 'forceAtlas2Based',
+                forceAtlas2Based: { gravitationalConstant: -80, springLength: 250 }
+            }
+        };
+
+        var network = new vis.Network(container, data, options);
+    </script>
+</body>
+</html>

@@ -1,0 +1,115 @@
+/* Reset básico */
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-family: 'Inter', sans-serif;
+    background-color: #f4f4f0;
+    color: #333;
+    display: flex;
+    height: 100vh;
+    overflow: hidden;
+}
+
+/* BARRA LATERAL (SIDEBAR) */
+.sidebar {
+    width: 350px;
+    background-color: #ffffff;
+    padding: 40px 30px;
+    box-shadow: 4px 0 15px rgba(0, 0, 0, 0.05);
+    display: flex;
+    flex-direction: column;
+    z-index: 10;
+}
+
+.sidebar h1 {
+    font-size: 24px;
+    font-weight: 600;
+    color: #1a1a1a;
+    margin-bottom: 15px;
+    line-height: 1.2;
+}
+
+.sidebar p {
+    font-size: 15px;
+    font-weight: 300;
+    color: #555;
+    line-height: 1.5;
+    margin-bottom: 30px;
+}
+
+/* LEGENDA */
+.legend {
+    background-color: #f9f9f9;
+    padding: 20px;
+    border-radius: 12px;
+    border: 1px solid #eaeaea;
+}
+
+.legend h3 {
+    font-size: 14px;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    margin-bottom: 15px;
+    color: #888;
+}
+
+.legend-item {
+    display: flex;
+    align-items: center;
+    margin-bottom: 12px;
+    font-size: 14px;
+    color: #444;
+}
+
+.color-box {
+    width: 20px;
+    height: 20px;
+    border-radius: 4px;
+    margin-right: 12px;
+}
+
+.color-science { background-color: #00cc66; }
+.color-pseudo { background-color: #ff4d4d; }
+.color-dialogue { background-color: #333; border-radius: 50%; height: 4px; }
+
+/* ÁREA DO GRAFO */
+.graph-container {
+    flex-grow: 1;
+    position: relative;
+    padding: 20px;
+}
+
+#mynetwork {
+    width: 100%;
+    height: 100%;
+    background-color: #ffffff;
+    border-radius: 16px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+    border: 1px solid #eaeaea;
+}
+
+/* CUSTOMIZAÇÃO DO TOOLTIP */
+div.vis-tooltip {
+    background-color: #222222 !important;
+    color: #ffffff !important;
+    border: none !important;
+    border-radius: 10px !important;
+    padding: 15px !important;
+    font-family: 'Inter', sans-serif !important;
+    font-size: 14px !important;
+    line-height: 1.5 !important;
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2) !important;
+    max-width: 320px !important;
+    white-space: normal !important;
+}
+
+div.vis-tooltip b {
+    color: #ffd700;
+    font-size: 15px;
+    display: block;
+    margin-bottom: 5px;
+}
