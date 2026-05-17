@@ -113,3 +113,39 @@ div.vis-tooltip b {
     display: block;
     margin-bottom: 5px;
 }
+
+/* BOTÃO DE RECENTRALIZAR */
+#btn-recentralizar {
+    position: absolute;
+    bottom: 40px; /* Distância do fundo */
+    right: 40px;  /* Distância da direita */
+    background-color: #ffffff;
+    color: #1a1a1a;
+    border: 1px solid #eaeaea;
+    padding: 12px 20px;
+    font-family: 'Inter', sans-serif;
+    font-size: 14px;
+    font-weight: 600;
+    border-radius: 30px; /* Formato de pílula super moderno */
+    cursor: pointer;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+    display: flex;
+    align-items: center;
+    gap: 8px; /* Espaço entre o emoji e o texto */
+    transition: all 0.2s ease; /* Transição suave para o efeito de passar o mouse */
+    z-index: 20; /* Garante que fica em cima do grafo */
+}
+
+/* Efeito ao passar o mouse (Hover) */
+#btn-recentralizar:hover {
+    background-color: #1a1a1a;
+    color: #ffffff;
+    border-color: #1a1a1a;
+    transform: translateY(-2px); /* Dá um leve "salto" para cima */
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.15);
+}
+
+/* Efeito ao clicar (Active) */
+#btn-recentralizar:active {
+    transform: translateY(0);
+}
