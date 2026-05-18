@@ -22,6 +22,17 @@
                 <span>1990</span>
             </div>
         </div>
+        <div class="filter-container">
+        <h3>Filtrar por Filósofo</h3>
+            <select id="filtro-filosofo">
+                <option value="todos">Todos os Filósofos</option>
+                <option value="1">Karl Popper</option>
+                <option value="2">Imre Lakatos</option>
+                <option value="6">Thomas Kuhn</option>
+                <option value="7">Paul Feyerabend</option>
+                <option value="8">Carl Hempel</option>
+            </select>
+        </div>
         <div class="legend">
             <h3>Arestas</h3>
             <div class="legend-item">
@@ -55,41 +66,90 @@
         var container = document.getElementById('mynetwork');
         
         // Opções visuais do Grafo
+        // var options = {
+        //     nodes: {
+        //         shape: 'dot',
+        //         size: 25,
+        //         font: { size: 16, face: 'Inter', color: '#333' },
+        //         borderWidth: 2
+        //     },
+        //     groups: {
+        //         filosofo: {
+        //             size: 40,
+        //             color: { 
+        //                 border: '#1a1a1a', 
+        //                 background: '#ffffff'
+        //             },
+        //             font: { color: '#1a1a1a', face: 'Inter', size: 14, bold: true },
+        //             borderWidth: 4,
+        //             shadow: { enabled: true, color: 'rgba(0,0,0,0.2)', size: 10, x: 2, y: 2 }
+        //         },
+        //         campo: {
+        //             color: { background: '#f0f0f0', border: '#d3d3d3' },
+        //             font: { color: '#333', face: 'Inter' },
+        //             shadow: { enabled: true, color: 'rgba(0,0,0,0.1)', size: 5, x: 2, y: 2 }
+        //         }
+        //     },
+        //     interaction: {
+        //         hover: true,
+        //         tooltipDelay: 50
+        //     },
+        //     physics: {
+        //         solver: 'forceAtlas2Based',
+        //         forceAtlas2Based: { gravitationalConstant: -80, springLength: 250 }
+        //     }
+        // };
+        
         var options = {
+        
             nodes: {
                 shape: 'dot',
-                size: 25,
-                font: { size: 16, face: 'Inter', color: '#333' },
-                borderWidth: 2
-            },
-            groups: {
-                filosofo: {
-                    size: 40,
-                    color: { 
-                        border: '#1a1a1a', 
-                        background: '#ffffff'
-                    },
-                    font: { color: '#1a1a1a', face: 'Inter', size: 14, bold: true },
-                    borderWidth: 4,
-                    shadow: { enabled: true, color: 'rgba(0,0,0,0.2)', size: 10, x: 2, y: 2 }
+                size: 30,
+                font: { 
+                    size: 14, 
+                    face: 'Inter', 
+                    color: '#1a1a1a',
+                    background: 'rgba(255, 255, 255, 0.8)', 
+                    strokeWidth: 2,
+                    strokeColor: '#ffffff'
                 },
-                campo: {
-                    color: { background: '#f0f0f0', border: '#d3d3d3' },
-                    font: { color: '#333', face: 'Inter' },
-                    shadow: { enabled: true, color: 'rgba(0,0,0,0.1)', size: 5, x: 2, y: 2 }
-                }
+                borderWidth: 3,
+                shadow: { enabled: true, color: 'rgba(0,0,0,0.15)', size: 10, x: 3, y: 3 }
             },
-            interaction: {
-                hover: true,
-                tooltipDelay: 50
+
+            
+            edges: {
+                width: 2,
+                smooth: {
+                    type: 'continuous',
+                    roundness: 0.6
+                },
+                shadow: { enabled: true, color: 'rgba(0,0,0,0.05)', size: 3, x: 1, y: 1 }
             },
+
+          
             physics: {
                 solver: 'forceAtlas2Based',
-                forceAtlas2Based: { gravitationalConstant: -80, springLength: 250 }
+                forceAtlas2Based: { 
+                    gravitationalConstant: -150,    // Afasta mais os nós uns dos outros (desaninha)
+                    centralGravity: 0.01,           // Mantém o grafo centrado suavemente
+                    springLength: 300,              // Aumenta o tamanho das linhas (dá "respiro" visual)
+                    springConstant: 0.04            // Deixa a atração menos agressiva
+                },
+                stabilization: {
+                    enabled: true,
+                    iterations: 200, // O grafo "pensa" na posição ideal invisivelmente antes de aparecer, evitando pular na tela
+                    fit: true
+                }
+            },
+
+            interaction: {
+                hover: true,
+                tooltipDelay: 100,
+                zoomView: true
             }
         };
         
-
         fetch('data.json')
             .then(response => response.json()) 
             .then(dados => {
@@ -195,6 +255,44 @@
                     // Atualiza o grafo
                     nodes.update(nodesToUpdate);
                 });
+                
+                
+                
+            
+                var selectFilosofo = document.getElementById('filtro-filosofo');
+
+                selectFilosofo.addEventListener('change', function() {
+                    var idEscolhido = this.value;
+                
+                    // Garantir que todos os nós estão visíveis, já que mudámos a abordagem
+                    var todosVisiveis = dados.nodes.map(n => ({ id: n.id, hidden: false }));
+                    nodes.update(todosVisiveis);
+                
+                    if (idEscolhido === 'todos') {
+                        // Se escolher "Todos", a câmara afasta-se para mostrar o grafo inteiro
+                        network.fit({ 
+                            animation: { 
+                                duration: 250, 
+                                easingFunction: 'easeInOutQuad' 
+                            } 
+                        });
+                    } else {
+                        idEscolhido = parseInt(idEscolhido); // Converte o ID para número
+                    
+                        // A "mágica" do Vis.js: move a câmara e dá zoom no nó selecionado
+                        network.focus(idEscolhido, {
+                            scale: 1.2, // Nível de zoom (1.0 é o tamanho real, valores maiores aproximam mais)
+                            animation: {
+                                duration: 1000,          // Duração do movimento (1000ms = 1 segundo)
+                                easingFunction: 'easeInOutQuad' // Faz o movimento começar suave, acelerar e desacelerar no fim
+                            }
+                        });
+                    }
+                });
+
+
+
+                
 
             })
             .catch(error => console.error("Erro ao carregar os dados:", error));

@@ -1,20 +1,22 @@
-/* Reset básico */
-* {
-    box-sizing: border-box;
-    margin: 0;
-    padding: 0;
+:root {
+    --primary-font: 'Inter', sans-serif;
+    --bg-app: #f4f7f6;         
+    --bg-sidebar: #ffffff;     
+    --text-main: #2b2b2b;
+    --text-muted: #6c757d;
+    --border-color: #e9ecef;
+    --accent-color: #2563eb;   
 }
 
 body {
-    font-family: 'Inter', sans-serif;
-    background-color: #f4f4f0;
-    color: #333;
+    font-family: var(--primary-font);
+    background-color: var(--bg-app);
+    color: var(--text-main);
     display: flex;
     height: 100vh;
-    overflow: hidden;
+    overflow: hidden; 
 }
 
-/* BARRA LATERAL (SIDEBAR) */
 .sidebar {
     width: 350px;
     background-color: #ffffff;
@@ -41,30 +43,35 @@ body {
     margin-bottom: 30px;
 }
 
-/* LEGENDA */
+
 .legend {
-    background-color: #f9f9f9;
+    background-color: #f8fafc;
     padding: 20px;
     border-radius: 12px;
-    border: 1px solid #eaeaea;
+    border: 1px solid var(--border-color);
+    margin-bottom: 30px;
 }
 
 .legend h3 {
-    font-size: 14px;
+    font-size: 12px;
     text-transform: uppercase;
-    letter-spacing: 1px;
-    margin-bottom: 15px;
-    color: #888;
+    letter-spacing: 1.2px;
+    color: var(--text-muted);
+    margin-bottom: 16px;
 }
 
 .legend-item {
     display: flex;
     align-items: center;
-    margin-bottom: 12px;
+    margin-bottom: 14px;
     font-size: 14px;
-    color: #444;
+    font-weight: 500;
+    color: #4b5563;
 }
 
+.legend-item:last-child {
+    margin-bottom: 0;
+}
 .color-box {
     width: 20px;
     height: 20px;
@@ -76,7 +83,7 @@ body {
 .color-pseudo { background-color: #ff4d4d; }
 .color-dialogue { background-color: #333; border-radius: 50%; height: 4px; }
 
-/* ÁREA DO GRAFO */
+
 .graph-container {
     flex-grow: 1;
     position: relative;
@@ -92,7 +99,7 @@ body {
     border: 1px solid #eaeaea;
 }
 
-/* CUSTOMIZAÇÃO DO TOOLTIP */
+
 div.vis-tooltip {
     background-color: #222222 !important;
     color: #ffffff !important;
@@ -114,11 +121,11 @@ div.vis-tooltip b {
     margin-bottom: 5px;
 }
 
-/* BOTÃO DE RECENTRALIZAR */
+
 #btn-recentralizar {
     position: absolute;
-    bottom: 40px; /* Distância do fundo */
-    right: 40px;  /* Distância da direita */
+    bottom: 40px; 
+    right: 40px;  
     background-color: #ffffff;
     color: #1a1a1a;
     border: 1px solid #eaeaea;
@@ -126,14 +133,14 @@ div.vis-tooltip b {
     font-family: 'Inter', sans-serif;
     font-size: 14px;
     font-weight: 600;
-    border-radius: 30px; /* Formato de pílula super moderno */
+    border-radius: 30px;
     cursor: pointer;
     box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
     display: flex;
     align-items: center;
     gap: 8px;
-    transition: all 0.2s ease; /* Transição suave para o efeito de passar o mouse */
-    z-index: 20; /* Garante que fica em cima do grafo */
+    transition: all 0.2s ease; 
+    z-index: 20; 
 }
 
 
@@ -141,7 +148,7 @@ div.vis-tooltip b {
     background-color: #1a1a1a;
     color: #ffffff;
     border-color: #1a1a1a;
-    transform: translateY(-2px); /* Dá um leve "salto" para cima */
+    transform: translateY(-2px); 
     box-shadow: 0 6px 20px rgba(0, 0, 0, 0.15);
 }
 
@@ -173,10 +180,10 @@ div.vis-tooltip b {
     font-size: 16px;
 }
 
-/* Estilo do Input Range (Slider) */
+
 #slider-tempo {
     width: 100%;
-    accent-color: #1a1a1a; /* Cor do botão do slider */
+    accent-color: #1a1a1a; 
     cursor: pointer;
 }
 
@@ -187,3 +194,47 @@ div.vis-tooltip b {
     font-size: 12px;
     color: #999;
 }
+
+
+
+
+.filter-container {
+    margin-bottom: 25px;
+    padding: 20px;
+    background-color: #f8fafc;
+    border-radius: 12px;
+    border: 1px solid var(--border-color);
+}
+
+.filter-container h3 {
+    font-size: 13px;
+    color: var(--text-muted);
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    margin-bottom: 12px;
+}
+
+#filtro-filosofo {
+    width: 100%;
+    padding: 10px 12px;
+    border-radius: 8px;
+    border: 1px solid #cbd5e1;
+    background-color: #ffffff;
+    color: var(--text-main);
+    font-family: var(--primary-font);
+    font-size: 14px;
+    font-weight: 500;
+    cursor: pointer;
+    outline: none;
+    transition: border-color 0.2s;
+}
+
+#filtro-filosofo:hover {
+    border-color: var(--accent-color);
+}
+
+
+
+
+
+
